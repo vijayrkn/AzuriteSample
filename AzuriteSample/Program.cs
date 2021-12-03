@@ -19,8 +19,8 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    await using var scope = app.Services.GetService<IServiceScopeFactory>().CreateAsyncScope();
-    var options = scope.ServiceProvider.GetRequiredService<DbContextOptions<AzuriteSampleContext>>();
+    await using var scope = app.Services?.GetService<IServiceScopeFactory>()?.CreateAsyncScope();
+    var options = scope?.ServiceProvider.GetRequiredService<DbContextOptions<AzuriteSampleContext>>();
     await DatabaseUtility.EnsureDbCreatedAndSeedAsync(options);
 }
 else
